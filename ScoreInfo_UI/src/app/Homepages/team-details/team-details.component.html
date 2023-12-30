@@ -1,0 +1,18 @@
+<div class="d-flex justify-content-center align-items-center vh-80 flex-column">
+    <h6 class="bg-body-tertiary p-2 border-top border-bottom">Royal Sports</h6>
+
+    <ul class="list-group list-group-light mb-4">
+        <li class="list-group-item d-flex justify-content-between align-items-center"  *ngFor="let player of players">
+          <div class="d-flex align-items-center">
+            <div style="font-size: 30px;">👤</div> 
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{ player.name }}</p>
+              <p class="text-muted mb-0">{{ player.email }}</p>
+              <p class="text-muted mb-0">{{ player.role }}</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+  
+
+</div>

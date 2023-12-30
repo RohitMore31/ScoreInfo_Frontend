@@ -9,6 +9,7 @@ import { PointtableComponent } from './Homepages/pointtable/pointtable.component
 import { ScheduleComponent } from './Homepages/schedule/schedule.component';
 import { HomeScreenComponent } from './Homepages/home-screen/home-screen.component';
 import { NavbarComponent } from './Homepages/navbar/navbar.component';
+import { TeamDetailsComponent } from './Homepages/team-details/team-details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NavbarComponent } from './Homepages/navbar/navbar.component';
     PointtableComponent,
     ScheduleComponent,
     HomeScreenComponent,
-    NavbarComponent
+    NavbarComponent,
+    TeamDetailsComponent
   ],
   imports: [
     BrowserModule,
