@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Route, Router } from '@angular/router';
 import { LoginServiceService } from 'src/app/Services/login-service.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { LoginServiceService } from 'src/app/Services/login-service.service';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient,private loginService:LoginServiceService) {
+  constructor(private formBuilder: FormBuilder, private http: HttpClient,private loginService:LoginServiceService, private router:Router) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -26,6 +27,11 @@ export class LoginComponent {
           (data) => {
             // Handle successful API response
             console.log('API Response:', data);
+             // Store the received data in localStorage
+            localStorage.setItem('logindata', JSON.stringify(data));
+
+            // Redirect to the 'addscore' route upon successful login
+            this.router.navigate(['/addscore']);
           },
           (error) => {
             // Handle error from API

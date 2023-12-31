@@ -14,6 +14,8 @@ import { LoginComponent } from './Loginpages/login/login.component';
 import { ForgotPasswordComponent } from './Loginpages/forgot-password/forgot-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AddScoreComponent } from './Scoreboardpages/Component/add-score/add-score.component';
+import { AddScheduleComponent } from './Scoreboardpages/Component/add-schedule/add-schedule.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     TeamDetailsComponent,
     LoginComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    AddScoreComponent,
+    AddScheduleComponent
   ],
   imports: [
     BrowserModule,
