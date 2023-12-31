@@ -6,6 +6,7 @@ import { ScheduleComponent } from './Homepages/schedule/schedule.component';
 import { TeamsComponent } from './Homepages/teams/teams.component';
 import { HomeScreenComponent } from './Homepages/home-screen/home-screen.component';
 import { TeamDetailsComponent } from './Homepages/team-details/team-details.component';
+import { LoginComponent } from './Loginpages/login/login.component';
 
 const routes: Routes = [
   {path:"",component:HomeScreenComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path:"pointtable",component:PointtableComponent},
   {path:"schedule",component:ScheduleComponent},
   {path:"teams",component:TeamsComponent},
-  {path:"teamdetails",component:TeamDetailsComponent}
+  {path:"teamdetails",component:TeamDetailsComponent},
+  {path:"login",component:LoginComponent}
 
 ];
 

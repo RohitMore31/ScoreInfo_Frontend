@@ -10,6 +10,10 @@ import { ScheduleComponent } from './Homepages/schedule/schedule.component';
 import { HomeScreenComponent } from './Homepages/home-screen/home-screen.component';
 import { NavbarComponent } from './Homepages/navbar/navbar.component';
 import { TeamDetailsComponent } from './Homepages/team-details/team-details.component';
+import { LoginComponent } from './Loginpages/login/login.component';
+import { ForgotPasswordComponent } from './Loginpages/forgot-password/forgot-password.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,11 +24,18 @@ import { TeamDetailsComponent } from './Homepages/team-details/team-details.comp
     ScheduleComponent,
     HomeScreenComponent,
     NavbarComponent,
-    TeamDetailsComponent
+    TeamDetailsComponent,
+    LoginComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientModule
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
