@@ -1,1 +1,11 @@
-<p>schedule works!</p>
+
+  <div class="d-flex justify-content-center align-items-center flex-column">
+    <h6 class="bg-body-tertiary p-2 border-top border-bottom">Matches</h6>
+    <div class="list-group list-group-light w-50 text-center">
+      <a *ngFor="let match of teams" href="#" 
+         [ngClass]="'list-group-item list-group-item-action px-3 border-0 rounded-3 mb-2 ' + (match.status === 'recent' ? 'list-group-item-danger' : 'list-group-item-success')" class="my-3 py-3">
+        {{ match.name }}
+      </a>
+    </div>
+  </div>
+  
