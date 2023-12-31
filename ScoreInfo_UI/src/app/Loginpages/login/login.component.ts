@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginServiceService } from 'src/app/Services/login-service.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private formBuilder: FormBuilder, private http: HttpClient,private loginService:LoginServiceService) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -20,9 +21,8 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       const formData = this.loginForm.value;
-      
-      this.http.post('your-api-endpoint', formData)
-        .subscribe(
+           
+        this.loginService.login(formData).subscribe(
           (data) => {
             // Handle successful API response
             console.log('API Response:', data);
