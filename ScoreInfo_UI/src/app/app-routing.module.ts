@@ -9,6 +9,8 @@ import { TeamDetailsComponent } from './Homepages/team-details/team-details.comp
 import { LoginComponent } from './Loginpages/login/login.component';
 import { AddScoreComponent } from './Scoreboardpages/Component/add-score/add-score.component';
 import { AuthGuardService } from './Scoreboardpages/Services/auth-guard.service';
+import { AddDashboardComponent } from './Scoreboardpages/Component/add-dashboard/add-dashboard.component';
+import { AddScheduleComponent } from './Scoreboardpages/Component/add-schedule/add-schedule.component';
 
 const routes: Routes = [
   {path:"",component:HomeScreenComponent},
@@ -18,9 +20,11 @@ const routes: Routes = [
   {path:"teams",component:TeamsComponent},
   {path:"teamdetails",component:TeamDetailsComponent},
   {path:"login",component:LoginComponent},
+  {path:"addscore",component:AddScoreComponent},
+  {path:"addschedule",component:AddScheduleComponent},
   { 
-    path: 'addscore', 
-    component: AddScoreComponent,
+    path: 'adddashboard', 
+    component:  AddDashboardComponent,
     canActivate: [AuthGuardService]
   },
 

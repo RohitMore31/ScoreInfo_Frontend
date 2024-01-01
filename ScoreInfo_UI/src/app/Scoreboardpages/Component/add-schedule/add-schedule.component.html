@@ -1,1 +1,37 @@
-<p>add-schedule works!</p>
+<div class="scheduleContainer">
+<div class="card text-center m-4">
+    <div class="card-header">Fix Match</div>
+    <div class="card-body">
+        <form [formGroup]="fixMatchForm" (ngSubmit)="onSubmit()">
+            <div>
+              <label for="team1">Team 1:</label>
+              <select class="form-select" formControlName="team1" id="team1" required>
+                <option *ngFor="let team of teams" [value]="team._id">{{ team.teamname }}</option>
+              </select>
+            </div>
+          
+            <div  class="my-3">
+              <label for="team2">Team 2:</label>
+              <select formControlName="team2" class="form-select" id="team2" required>
+                <option *ngFor="let team of teams" [value]="team._id">{{ team.teamname }}</option>
+              </select>
+            </div>
+                    
+            <div class="my-4">
+              <label class="mx-3" for="matchDate">Match Date:</label>
+              <input type="date" formControlName="matchDate" id="matchDate" required>
+            </div>
+          
+            <div class="badge bg-danger" *ngIf="fixMatchForm.hasError('sameTeam') && fixMatchForm.dirty">
+              <p>Error: Teams must be different.</p>
+            </div>
+
+            <div>
+            <button type="submit" class="btn btn-primary my-2" [disabled]="!fixMatchForm.valid">Fix Match</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+<!-- <app-schedule></app-schedule> -->

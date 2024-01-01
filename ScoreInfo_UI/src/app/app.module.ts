@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddScoreComponent } from './Scoreboardpages/Component/add-score/add-score.component';
 import { AddScheduleComponent } from './Scoreboardpages/Component/add-schedule/add-schedule.component';
+import { AddDashboardComponent } from './Scoreboardpages/Component/add-dashboard/add-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AddScheduleComponent } from './Scoreboardpages/Component/add-schedule/a
     LoginComponent,
     ForgotPasswordComponent,
     AddScoreComponent,
-    AddScheduleComponent
+    AddScheduleComponent,
+    AddDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -38,8 +40,7 @@ import { AddScheduleComponent } from './Scoreboardpages/Component/add-schedule/a
     ReactiveFormsModule,
     HttpClientModule,
     HttpClientModule
-    
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

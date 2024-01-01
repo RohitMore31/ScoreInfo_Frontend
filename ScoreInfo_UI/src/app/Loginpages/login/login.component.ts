@@ -31,7 +31,7 @@ export class LoginComponent {
             localStorage.setItem('logindata', JSON.stringify(data));
 
             // Redirect to the 'addscore' route upon successful login
-            this.router.navigate(['/addscore']);
+            this.router.navigate(['/adddashboard']);
           },
           (error) => {
             // Handle error from API
