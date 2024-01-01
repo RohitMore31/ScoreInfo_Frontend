@@ -3,6 +3,7 @@ import { ApiService } from '../../Services/api.service';
 import {Team} from '../../../Interface/Team'
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Match } from 'src/app/Interface/Match';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class AddScheduleComponent {
     status:"Not Yet Started"
   }
 
-  constructor(private formBuilder: FormBuilder, private teamService: ApiService) 
+  constructor(private formBuilder: FormBuilder, private teamService: ApiService,private router:Router) 
   { }
 
   ngOnInit(): void {
@@ -73,6 +74,7 @@ export class AddScheduleComponent {
         (res)=>{
           alert(res.message)
           console.log(res);
+        
         },(err)=>{
           console.log((err));
         }
