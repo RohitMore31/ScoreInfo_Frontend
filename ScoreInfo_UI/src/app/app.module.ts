@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddScoreComponent } from './Scoreboardpages/Component/add-score/add-score.component';
 import { AddScheduleComponent } from './Scoreboardpages/Component/add-schedule/add-schedule.component';
 import { AddDashboardComponent } from './Scoreboardpages/Component/add-dashboard/add-dashboard.component';
+import { FixMatchComponent } from './Scoreboardpages/Component/fix-match/fix-match.component';
 
 @NgModule({
   declarations: [
@@ -32,14 +33,16 @@ import { AddDashboardComponent } from './Scoreboardpages/Component/add-dashboard
     ForgotPasswordComponent,
     AddScoreComponent,
     AddScheduleComponent,
-    AddDashboardComponent
+    AddDashboardComponent,
+    FixMatchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
 
   ],
   providers: [],
