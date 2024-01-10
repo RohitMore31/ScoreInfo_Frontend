@@ -36,11 +36,31 @@ export class TossTeamComponent {
     // console.log(this.battingTeam);
   }
 
-  startMatch(){
-    this.matchFixData.toss=this.battingTeam;
-    this.apiService.fixTeamSelection(this.matchFixData).subscribe(
-      res=>console.log(res),err=>console.log(err)
-    )
+  startMatch() {
+    const confirmation = window.confirm('Are you sure you want to start the match?');
+    if (confirmation) {
+      this.matchFixData.toss = this.battingTeam;
+      this.apiService.fixTeamSelection(this.matchFixData).subscribe(
+        (res) => {
+          console.log(res); // Log the response
+          const matchId = res.matchId;
+          const matchTeamId = res._id;
+          
+          // Redirect to the 'add-score' route with matchId and objectId as state
+          this.router.navigate(['/add-score'], {
+            state: {
+              matchId: matchId,
+              objectId: matchTeamId
+            }
+          });
+        },
+        (err) => {
+          console.log(err); // Log any error
+        }
+      );
+    } else {
+      // Handle if the user cancels the confirmation
+    }
   }
 }
 

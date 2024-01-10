@@ -26,6 +26,7 @@ const routes: Routes = [
   {path:"newmatch",component:FixMatchComponent},
   {path:"addschedule",component:AddScheduleComponent},
   {path:"toss-team",component:TossTeamComponent},
+  {path:"add-score",component:AddScoreComponent},
   { 
     path: 'adddashboard', 
     component:  AddDashboardComponent,
