@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Match } from 'src/app/Interface/Match';
+import { MatchTeam } from 'src/app/Interface/MatchTeam';
 import { Player } from 'src/app/Interface/Player';
 import { Team } from 'src/app/Interface/Team';
 
@@ -32,4 +33,13 @@ export class ApiService {
     const data = { teamId: teamId };
     return this.http.post<Player[]>(`${this.baseUrl}/player/teamplayers`, data);
   }
-}
+
+  fixTeamSelection(matchData:MatchTeam): Observable<any>{
+    return this.http.post(`${this.baseUrl}/teammatch/add`,matchData);
+  }
+
+  GetMatchSelectedWithSelectedStatus(id:string):Observable<MatchTeam>{
+    return this.http.get<MatchTeam>(`${this.baseUrl}/teammatch/${id}`)
+  }
+  
+} 

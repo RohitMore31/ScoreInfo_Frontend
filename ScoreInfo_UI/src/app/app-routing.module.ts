@@ -12,6 +12,7 @@ import { AuthGuardService } from './Scoreboardpages/Services/auth-guard.service'
 import { AddDashboardComponent } from './Scoreboardpages/Component/add-dashboard/add-dashboard.component';
 import { AddScheduleComponent } from './Scoreboardpages/Component/add-schedule/add-schedule.component';
 import { FixMatchComponent } from './Scoreboardpages/Component/fix-match/fix-match.component';
+import { TossTeamComponent } from './Scoreboardpages/Component/toss-team/toss-team.component';
 
 const routes: Routes = [
   {path:"",component:HomeScreenComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path:"addscore",component:AddScoreComponent},
   {path:"newmatch",component:FixMatchComponent},
   {path:"addschedule",component:AddScheduleComponent},
+  {path:"toss-team",component:TossTeamComponent},
   { 
     path: 'adddashboard', 
     component:  AddDashboardComponent,

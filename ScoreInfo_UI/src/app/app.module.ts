@@ -18,6 +18,7 @@ import { AddScoreComponent } from './Scoreboardpages/Component/add-score/add-sco
 import { AddScheduleComponent } from './Scoreboardpages/Component/add-schedule/add-schedule.component';
 import { AddDashboardComponent } from './Scoreboardpages/Component/add-dashboard/add-dashboard.component';
 import { FixMatchComponent } from './Scoreboardpages/Component/fix-match/fix-match.component';
+import { TossTeamComponent } from './Scoreboardpages/Component/toss-team/toss-team.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FixMatchComponent } from './Scoreboardpages/Component/fix-match/fix-mat
     AddScoreComponent,
     AddScheduleComponent,
     AddDashboardComponent,
-    FixMatchComponent
+    FixMatchComponent,
+    TossTeamComponent
   ],
   imports: [
     BrowserModule,

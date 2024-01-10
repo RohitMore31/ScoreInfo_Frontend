@@ -1,11 +1,11 @@
 export interface Match{
-    _id?: String;
-    team1: String;
-    team1name?:String,
-    team2: String;
-    team2name?:String
+    _id?: string;
+    team1: string;
+    team1name?:string,
+    team2: string;
+    team2name?:string
     matchDate: Date;
-    venue?: String;
-    status:String;
+    venue?: string;
+    status:string;
     matchNumber:Number
 }

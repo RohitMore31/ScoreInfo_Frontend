@@ -1,8 +1,8 @@
 export interface Player{
-    _id:String,
-    playerName:String,
-    playerSurName:String,
+    _id:string,
+    playerName:string,
+    playerSurName:string,
     playerAge:Number,
-    playerRoles:String[],
-    playerTeam:String
+    playerRoles:string[],
+    playerTeam:string
 }

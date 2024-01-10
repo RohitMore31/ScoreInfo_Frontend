@@ -1,0 +1,43 @@
+<div class="mt-5 ptcontainer ">
+    <h6 class="bg-body-tertiary p-3 border-top border-bottom text-center">Select Batting First Team</h6>
+    <div class="card mx-2 d-flex flex-row justify-content-around p-3 my-3">
+      <label class="card-header">
+        <input type="radio" name="tossTeam" [value]="matchFixData.team1name" [(ngModel)]="battingTeam" (change)="setBattingFirstTeam(matchFixData.team1name)" />
+        {{ matchFixData.team1name }}
+      </label>
+      <label  class="card-header">
+        <input type="radio" name="tossTeam" [value]="matchFixData.team2name" [(ngModel)]="battingTeam" (change)="setBattingFirstTeam(matchFixData.team2name)" />
+        {{ matchFixData.team2name }}
+      </label>
+    </div>
+    <p class="small text-muted mt-2">Note: Once you've selected a team, the choice is final and cannot be changed.</p>
+  </div>
+  
+
+
+<div class="ptcontainer" *ngIf="matchFixData.selectedmatchTeam1Players.length>0">
+    <h6 class="bg-body-tertiary p-3 border-top border-bottom text-center ">Playing 11</h6>
+    <div class="card mx-2">
+   <div class="d-flex justify-content-center">
+    <div>
+        <label class="d-flex justify-content-center card-header my-2"> {{ matchFixData.team1name }}</label>
+        <div class="d-flex bg-body-tertiary p-2 border-top border-bottom" *ngFor="let player of matchFixData.selectedmatchTeam1Players let i = index">
+            <div >
+                {{i+1 }} {{ player.playerName }} {{player.playerSurName}}
+            </div>
+        </div>
+      </div>
+    <div>
+        <label class="d-flex justify-content-center card-header my-2"> {{ matchFixData.team2name }}</label>
+        <div class="d-flex bg-body-tertiary p-2 border-top border-bottom" *ngFor="let player of matchFixData.selectedmatchTeam2Players let i =index">
+            <div >
+                {{i+1}} {{ player.playerName }} {{player.playerSurName}}
+            </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="d-flex justify-content-center flex-column">
+        <button [disabled]="battingTeam.length === 0" type="button" class="btn btn-success mt-5" (click)="startMatch()">Start Match</button>
+      </div>
+      
