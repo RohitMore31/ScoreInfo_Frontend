@@ -25,9 +25,9 @@ export class TossTeamComponent {
   }
 
   fetchMatches() {
-    (this.apiService.GetMatchSelectedWithSelectedStatus("659e3603b3ca87d11c625f76")).subscribe(
-      res => this.matchFixData=res
-    );
+    // (this.apiService.GetMatchSelectedWithSelectedStatus("659e3603b3ca87d11c625f76")).subscribe(
+    //   res => this.matchFixData=res
+    // );
     
   }
 
@@ -43,14 +43,16 @@ export class TossTeamComponent {
       this.apiService.fixTeamSelection(this.matchFixData).subscribe(
         (res) => {
           console.log(res); // Log the response
-          const matchId = res.matchId;
-          const matchTeamId = res._id;
+          const saveData = {
+            matchId:res.matchId,
+            matchTeamId:res._id
+          }
           
           // Redirect to the 'add-score' route with matchId and objectId as state
+
           this.router.navigate(['/add-score'], {
             state: {
-              matchId: matchId,
-              objectId: matchTeamId
+             data:saveData
             }
           });
         },

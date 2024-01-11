@@ -22,6 +22,9 @@ import { TossTeamComponent } from './Scoreboardpages/Component/toss-team/toss-te
 import { ScoreboardComponent } from './Scoreboardpages/Component/scoreboard/scoreboard.component';
 import { HighlightComponent } from './Scoreboardpages/Component/highlight/highlight.component';
 import { ControlPanelComponent } from './Scoreboardpages/Component/control-panel/control-panel.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatStepperModule} from '@angular/material/stepper';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -50,8 +53,10 @@ import { ControlPanelComponent } from './Scoreboardpages/Component/control-panel
     ReactiveFormsModule,
     HttpClientModule,
     HttpClientModule,
-    FormsModule
-
+    FormsModule,
+    BrowserAnimationsModule,
+    MatStepperModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

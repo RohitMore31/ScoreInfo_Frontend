@@ -38,7 +38,11 @@ export class ApiService {
     return this.http.post(`${this.baseUrl}/teammatch/add`,matchData);
   }
 
-  GetMatchSelectedWithSelectedStatus(id:string):Observable<MatchTeam>{
+  getMatchSelectedWithSelectedStatus(id:string):Observable<MatchTeam>{
+    return this.http.get<MatchTeam>(`${this.baseUrl}/teammatch/${id}`)
+  }
+
+  getMatchTeam(id:string):Observable<MatchTeam>{
     return this.http.get<MatchTeam>(`${this.baseUrl}/teammatch/${id}`)
   }
   
