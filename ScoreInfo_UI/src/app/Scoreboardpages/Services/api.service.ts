@@ -50,4 +50,8 @@ export class ApiService {
   saveInningData(data:Inning):Observable<Inning>{
     return this.http.post<Inning>(`${this.baseUrl}/inning/add`,data)
   }
+
+  getInninData(id:string):Observable<Inning>{
+    return this.http.get<Inning>(`${this.baseUrl}/inning/${id}`)
+  }
 } 

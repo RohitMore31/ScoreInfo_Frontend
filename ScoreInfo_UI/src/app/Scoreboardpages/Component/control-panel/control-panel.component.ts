@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatchTeam } from 'src/app/Interface/MatchTeam';
 import { ApiService } from '../../Services/api.service';
 import { Player } from 'src/app/Interface/Player';
+import { Inning } from 'src/app/Interface/InningInfo';
 
 @Component({
   selector: 'app-control-panel',
@@ -12,15 +13,13 @@ export class ControlPanelComponent {
   @Input() matchId!: string
   @Input() matchTeamId!: string
 
-  battingPlayerSelected: boolean = true;
   bowlerSelected: boolean = true;
+  inningData:Inning ={} as Inning;
 
   batFirstTeamPlayers: Player[] = []; 
   ballFirstTeamPlayers: Player[] = []; 
   matchTeamData!: MatchTeam;
-
-  battingTeam:string='';
-  bolwingTeam:string='';
+  battingPlayer: Player[] = [];
 
   // batsmans:Player[2]=[]
   
@@ -28,52 +27,56 @@ export class ControlPanelComponent {
   }
 
   ngOnInit(): void {
-    this.getTeamDetails(this.matchTeamId);
-   
+    this.getTeamDetails();
+    this.getInningData();
   }
 
-
-  
-  getTeamDetails(id: string) {
-
-    this.apiService.getMatchTeam(id).subscribe(res => {
+  getTeamDetails() {
+    this.apiService.getMatchTeam(this.matchTeamId).subscribe(res => {
       this.matchTeamData = res
     }, err => console.log(err)
     )
   }
 
   getInningData(){
-    // geting first team players
-    this.apiService.getTeamPlayer(this.matchTeamData.team1).subscribe(
-      (res) => {
-        if (this.matchTeamData.team1name === this.matchTeamData.toss) {
-          this.batFirstTeamPlayers = res
-        } else {
-          this.ballFirstTeamPlayers = res
-        }
-      }, (err) => {
-        console.log(err);
-      }
-    )
+    //get innning
+    this.apiService.getInninData(this.matchTeamId).subscribe(
+      (res)=>{
+        console.log(res);
+        this.inningData=res;
+      },err => console.log(err)
+    );
 
-    // geting Second team players
-    this.apiService.getTeamPlayer(this.matchTeamData.team2).subscribe(
-      (res) => {
-        if (this.matchTeamData.team1name === this.matchTeamData.toss) {
-          this.batFirstTeamPlayers = res
-        } else {
-          this.ballFirstTeamPlayers = res
-        }
-      }, (err) => {
-        console.log(err);
-      }
-    )
+  //   // get BatFirst Team Players
+  //   this.apiService.getTeamPlayer(this.matchTeamData.team1).subscribe(
+  //     (res) => {
+  //       if (this.matchTeamData.team1name === this.matchTeamData.toss) {
+  //         this.batFirstTeamPlayers = res
+  //       } else {
+  //         this.ballFirstTeamPlayers = res
+  //       }
+  //     }, (err) => {
+  //       console.log(err);
+  //     }
+  //   )
+
+  //   // geting Second team players
+  //   this.apiService.getTeamPlayer(this.matchTeamData.team2).subscribe(
+  //     (res) => {
+  //       if (this.matchTeamData.team1name === this.matchTeamData.toss) {
+  //         this.batFirstTeamPlayers = res
+  //       } else {
+  //         this.ballFirstTeamPlayers = res
+  //       }
+  //     }, (err) => {
+  //       console.log(err);
+  //     }
+  //   )
   }
 
-
-
   isBattingPlayerSelected(): boolean {
-    return this.battingPlayerSelected;
+    if(this.battingPlayer.length===2)return true
+    return false;
   }
 
   isBowlerSelected(): boolean {
@@ -89,7 +92,14 @@ export class ControlPanelComponent {
     return true; // Return true for other steps
   }
 
-
+  onPlayerSelection(player: Player) {
+    if (this.battingPlayer.length < 2) {
+      this.battingPlayer.push(player)
+    }else if(this.battingPlayer.includes(player)){
+      const index = this.battingPlayer.indexOf(player);
+      this.battingPlayer.splice(index, 1);
+    }
+  }
 
 
 }
