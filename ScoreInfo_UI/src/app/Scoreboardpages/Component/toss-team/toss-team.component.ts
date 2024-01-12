@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatchTeam } from 'src/app/Interface/MatchTeam';
 import { ApiService } from '../../Services/api.service';
+import { Inning } from 'src/app/Interface/InningInfo';
 
 @Component({
   selector: 'app-toss-team',
@@ -11,6 +12,7 @@ import { ApiService } from '../../Services/api.service';
 export class TossTeamComponent {
    matchFixData:MatchTeam ={ } as MatchTeam
    battingTeam: string = '';
+   inningData:Inning = {} as Inning;
 
   constructor(private router: Router,private apiService:ApiService) {
     const navigation = this.router.getCurrentNavigation();
@@ -40,6 +42,7 @@ export class TossTeamComponent {
     const confirmation = window.confirm('Are you sure you want to start the match?');
     if (confirmation) {
       this.matchFixData.toss = this.battingTeam;
+      
       this.apiService.fixTeamSelection(this.matchFixData).subscribe(
         (res) => {
           console.log(res); // Log the response
@@ -49,20 +52,40 @@ export class TossTeamComponent {
           }
           
           // Redirect to the 'add-score' route with matchId and objectId as state
-
-          this.router.navigate(['/add-score'], {
-            state: {
-             data:saveData
-            }
-          });
+          this.saveInningData(res._id).subscribe(res=>{
+            console.log(res);
+            this.router.navigate(['/add-score'], {
+              state: {
+               data:saveData
+              }
+            });
+          },err => console.log(err));
+          
         },
         (err) => {
           console.log(err); // Log any error
         }
       );
+
+     
     } else {
       // Handle if the user cancels the confirmation
     }
+  }
+
+  saveInningData(matchTeamId:string){
+    this.inningData.battingTeam = this.battingTeam;
+    this.inningData.matchId=this.matchFixData.matchId;
+    if(this.battingTeam != this.matchFixData.team1name){
+      this.inningData.bowlingTeam=this.matchFixData.team1name || ''
+    }else{
+      this.inningData.battingTeam=this.matchFixData.team2name || ''
+    }
+    this.inningData.matchTeamId = matchTeamId;
+
+    return this.apiService.saveInningData(this.inningData)
+    
+    
   }
 }
 

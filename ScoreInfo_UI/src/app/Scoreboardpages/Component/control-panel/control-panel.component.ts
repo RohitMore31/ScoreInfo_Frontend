@@ -9,55 +9,88 @@ import { Player } from 'src/app/Interface/Player';
   styleUrls: ['./control-panel.component.css']
 })
 export class ControlPanelComponent {
-  @Input() matchId!:string
-  @Input() matchTeamId!:string
+  @Input() matchId!: string
+  @Input() matchTeamId!: string
 
- // Example flags for step completion
- battingPlayerSelected: boolean = true;
- bowlerSelected: boolean = true;
- Team1Players:Player[]=[];
- Team2Players:Player[]=[];
+  battingPlayerSelected: boolean = true;
+  bowlerSelected: boolean = true;
 
- matchTeamData!: MatchTeam;
+  batFirstTeamPlayers: Player[] = []; 
+  ballFirstTeamPlayers: Player[] = []; 
+  matchTeamData!: MatchTeam;
 
- constructor(private apiService:ApiService){
- }
+  battingTeam:string='';
+  bolwingTeam:string='';
 
- ngOnInit(): void {
-  this.getTeamDetails(this.matchTeamId);
-}
-
- 
- getTeamDetails(id:string){
-
-  this.apiService.getMatchTeam(id).subscribe(res=>{
-    this.matchTeamData=res
-    console.log(this.matchTeamData);
-  },err=>console.log(err)
-  )
+  // batsmans:Player[2]=[]
   
+  constructor(private apiService: ApiService) {
+  }
 
- }
-
- isBattingPlayerSelected(): boolean {
-   return this.battingPlayerSelected;
- }
-
- isBowlerSelected(): boolean {
-   return this.bowlerSelected;
- }
-
- isStepValid(stepIndex: number): boolean {
-   if (stepIndex === 0) {
-     return this.isBattingPlayerSelected();
-   } else if (stepIndex === 1) {
-     return this.isBowlerSelected();
-   }
-   return true; // Return true for other steps
- }
+  ngOnInit(): void {
+    this.getTeamDetails(this.matchTeamId);
+   
+  }
 
 
+  
+  getTeamDetails(id: string) {
 
- 
+    this.apiService.getMatchTeam(id).subscribe(res => {
+      this.matchTeamData = res
+    }, err => console.log(err)
+    )
+  }
+
+  getInningData(){
+    // geting first team players
+    this.apiService.getTeamPlayer(this.matchTeamData.team1).subscribe(
+      (res) => {
+        if (this.matchTeamData.team1name === this.matchTeamData.toss) {
+          this.batFirstTeamPlayers = res
+        } else {
+          this.ballFirstTeamPlayers = res
+        }
+      }, (err) => {
+        console.log(err);
+      }
+    )
+
+    // geting Second team players
+    this.apiService.getTeamPlayer(this.matchTeamData.team2).subscribe(
+      (res) => {
+        if (this.matchTeamData.team1name === this.matchTeamData.toss) {
+          this.batFirstTeamPlayers = res
+        } else {
+          this.ballFirstTeamPlayers = res
+        }
+      }, (err) => {
+        console.log(err);
+      }
+    )
+  }
+
+
+
+  isBattingPlayerSelected(): boolean {
+    return this.battingPlayerSelected;
+  }
+
+  isBowlerSelected(): boolean {
+    return this.bowlerSelected;
+  }
+
+  isStepValid(stepIndex: number): boolean {
+    if (stepIndex === 0) {
+      return this.isBattingPlayerSelected();
+    } else if (stepIndex === 1) {
+      return this.isBowlerSelected();
+    }
+    return true; // Return true for other steps
+  }
+
+
+
+
 }
 

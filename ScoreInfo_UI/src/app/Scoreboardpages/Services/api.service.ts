@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Inning } from 'src/app/Interface/InningInfo';
 import { Match } from 'src/app/Interface/Match';
 import { MatchTeam } from 'src/app/Interface/MatchTeam';
 import { Player } from 'src/app/Interface/Player';
@@ -46,4 +47,7 @@ export class ApiService {
     return this.http.get<MatchTeam>(`${this.baseUrl}/teammatch/${id}`)
   }
   
+  saveInningData(data:Inning):Observable<Inning>{
+    return this.http.post<Inning>(`${this.baseUrl}/inning/add`,data)
+  }
 } 
