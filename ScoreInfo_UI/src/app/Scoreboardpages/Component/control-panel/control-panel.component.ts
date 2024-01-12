@@ -3,6 +3,7 @@ import { MatchTeam } from 'src/app/Interface/MatchTeam';
 import { ApiService } from '../../Services/api.service';
 import { Player } from 'src/app/Interface/Player';
 import { Inning } from 'src/app/Interface/InningInfo';
+import { TmplAstRecursiveVisitor } from '@angular/compiler';
 
 @Component({
   selector: 'app-control-panel',
@@ -13,13 +14,13 @@ export class ControlPanelComponent {
   @Input() matchId!: string
   @Input() matchTeamId!: string
 
-  bowlerSelected: boolean = true;
   inningData:Inning ={} as Inning;
 
   batFirstTeamPlayers: Player[] = []; 
   ballFirstTeamPlayers: Player[] = []; 
   matchTeamData!: MatchTeam;
   battingPlayer: Player[] = [];
+  bowlingPlayer: Player[] = [];
 
   // batsmans:Player[2]=[]
   
@@ -80,7 +81,8 @@ export class ControlPanelComponent {
   }
 
   isBowlerSelected(): boolean {
-    return this.bowlerSelected;
+   if(this.bowlingPlayer.length==1) return true
+   return false;
   }
 
   isStepValid(stepIndex: number): boolean {
@@ -92,7 +94,7 @@ export class ControlPanelComponent {
     return true; // Return true for other steps
   }
 
-  onPlayerSelection(player: Player) {
+  onBattingPlayerSelection(player: Player) {
     if (this.battingPlayer.length < 2) {
       this.battingPlayer.push(player)
     }else if(this.battingPlayer.includes(player)){
@@ -101,6 +103,29 @@ export class ControlPanelComponent {
     }
   }
 
+  onBowlingPlayerSelection(player: Player) {
+    if (this.bowlingPlayer.length < 1) {
+      this.bowlingPlayer.push(player)
+    }else if(this.bowlingPlayer.includes(player)){
+      const index = this.bowlingPlayer.indexOf(player);
+      this.bowlingPlayer.splice(index, 1);
+    }
+  }
 
+  getBattingTeamPlayers(){
+    if(this.matchTeamData.toss===this.matchTeamData.team1name){
+      return this.matchTeamData.selectedmatchTeam1Players
+    }else{
+      return this.matchTeamData.selectedmatchTeam2Players;
+    }
+  }
+
+  getBowlingTeamPlayers(){
+    if(!(this.matchTeamData.toss===this.matchTeamData.team1name)){
+      return this.matchTeamData.selectedmatchTeam1Players
+    }else{
+      return this.matchTeamData.selectedmatchTeam2Players;
+    }
+  }
 }
 
