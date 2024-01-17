@@ -1,1 +1,67 @@
-<p>scoreboard works!</p>
+<div class="ptcontainer">
+    <!-- batting details -->
+    <div>
+        <h3 class="bg-dark my-2 p-2 text-white">Team1 Inning Batting </h3>
+        <table class="table table-striped table-bordered">
+            <thead class="bg-light">
+            <tr>
+                <th>Batter</th>
+                <th>WH</th>
+                <th>R</th>
+                <th>B</th>
+                <th>4s</th>
+                <th>6s</th>
+                <th>SR</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let team of Batter" >
+            
+                <!-- <td>{{ team.name }}</td>
+                <td>{{ team.match }}</td>
+                <td>{{ team.win }}</td>
+                <td>{{ team.loss }}</td>
+                <td>{{ team.point }}</td>
+                <td>{{ team.runRate }}</td>  -->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- fall of wicket  -->
+    <div>
+        <h3 class="bg-dark my-2 p-2 text-white">Fall of Wicket</h3>
+
+    </div>
+
+    <!-- bowling details -->
+    <div>
+        <h3 class="bg-dark my-2 p-2 text-white">Team1 Inning Bowling</h3>
+        <table class="table table-striped table-bordered">
+            <thead class="bg-light">
+            <tr>
+                <th>Bowler</th>
+                <th>O</th>
+                <th>M</th>
+                <th>R</th>
+                <th>W</th>
+                <th>NB</th>
+                <th>WD</th>
+                <th>ECO</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let team of Bowlers" >
+            
+                <!-- <td>{{ team.name }}</td>
+                <td>{{ team.match }}</td>
+                <td>{{ team.win }}</td>
+                <td>{{ team.loss }}</td>
+                <td>{{ team.point }}</td>
+                <td>{{ team.runRate }}</td>  -->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    </div>

@@ -12,5 +12,6 @@ export interface MatchPlayerScore{
     playerSix:Number,
     playerBall:Number,
     playerStrikeRate:Number,
+    wicketStatus:string,
 
 }

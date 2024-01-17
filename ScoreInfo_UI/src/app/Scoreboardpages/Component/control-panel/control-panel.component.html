@@ -18,7 +18,7 @@
                       type="checkbox"
                       [id]="player._id"
                       [value]="player"
-                      [disabled]="battingPlayer.length === 2 && !battingPlayer.includes(player)"
+                      [disabled]="batters.length === 2 && !batters.includes(player)"
                       (change)="onBattingPlayerSelection(player)"
                     />
                   </div>
@@ -28,7 +28,10 @@
                 </div>
               </div>
             </div>
-          </div>          
+        </div>   
+        <div>
+            <button class="text-center btn-success" matStepperNext>Next</button>   
+        </div>    
         </mat-step>
 
         <!-- Step 2: Bowling Icon -->
@@ -49,7 +52,7 @@
                       type="checkbox"
                       [id]="player._id"
                       [value]="player"
-                      [disabled]="bowlingPlayer.length === 1 && !bowlingPlayer.includes(player)"
+                      [disabled]="bowler.length === 1 && !bowler.includes(player)"
                       (change)="onBowlingPlayerSelection(player)"
                     />
                   </div>
@@ -59,7 +62,10 @@
                 </div>
               </div>
             </div>
-          </div>      
+          </div>  
+          <div>
+            <button class="text-center btn-success" matStepperNext>Next</button>   
+        </div>        
         </mat-step>
 
         <!-- Step 3: Score Icon -->
@@ -67,7 +73,7 @@
           <ng-template matStepLabel>
             <mat-icon>emoji_events</mat-icon> <!-- Score Icon -->
           </ng-template>
-          <!-- Your content for entering score -->
+          <app-scoreboard></app-scoreboard>
           <h1>Enter Score</h1>
         </mat-step>
       </mat-horizontal-stepper>

@@ -19,11 +19,12 @@ export class ControlPanelComponent {
   batFirstTeamPlayers: Player[] = []; 
   ballFirstTeamPlayers: Player[] = []; 
   matchTeamData!: MatchTeam;
-  battingPlayer: Player[] = [];
-  bowlingPlayer: Player[] = [];
+  batters: Player[] = [];
+  bowler: Player[] = [];
 
-  // batsmans:Player[2]=[]
   
+
+
   constructor(private apiService: ApiService) {
   }
 
@@ -76,12 +77,12 @@ export class ControlPanelComponent {
   }
 
   isBattingPlayerSelected(): boolean {
-    if(this.battingPlayer.length===2)return true
+    if(this.batters.length===2)return true
     return false;
   }
 
   isBowlerSelected(): boolean {
-   if(this.bowlingPlayer.length==1) return true
+   if(this.bowler.length==1) return true
    return false;
   }
 
@@ -95,20 +96,20 @@ export class ControlPanelComponent {
   }
 
   onBattingPlayerSelection(player: Player) {
-    if (this.battingPlayer.length < 2) {
-      this.battingPlayer.push(player)
-    }else if(this.battingPlayer.includes(player)){
-      const index = this.battingPlayer.indexOf(player);
-      this.battingPlayer.splice(index, 1);
+    if (this.batters.length < 2) {
+      this.batters.push(player)
+    }else if(this.batters.includes(player)){
+      const index = this.batters.indexOf(player);
+      this.batters.splice(index, 1);
     }
   }
 
   onBowlingPlayerSelection(player: Player) {
-    if (this.bowlingPlayer.length < 1) {
-      this.bowlingPlayer.push(player)
-    }else if(this.bowlingPlayer.includes(player)){
-      const index = this.bowlingPlayer.indexOf(player);
-      this.bowlingPlayer.splice(index, 1);
+    if (this.bowler.length < 1) {
+      this.bowler.push(player)
+    }else if(this.bowler.includes(player)){
+      const index = this.bowler.indexOf(player);
+      this.bowler.splice(index, 1);
     }
   }
 
@@ -127,5 +128,7 @@ export class ControlPanelComponent {
       return this.matchTeamData.selectedmatchTeam2Players;
     }
   }
+
+  
 }
 
