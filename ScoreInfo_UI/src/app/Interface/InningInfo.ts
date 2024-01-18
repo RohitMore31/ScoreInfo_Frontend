@@ -26,5 +26,6 @@ export interface Ball {
     totalRuns: number;
     totalWickets: number;
     totalExtras: number;
+    status:string; // started/completed
   }
   

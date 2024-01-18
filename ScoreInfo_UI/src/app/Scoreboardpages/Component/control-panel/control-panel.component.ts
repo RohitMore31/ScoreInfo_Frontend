@@ -22,6 +22,8 @@ export class ControlPanelComponent {
   batters: Player[] = [];
   bowler: Player[] = [];
 
+  isInningStarted : boolean = false;
+
   
 
 
@@ -39,6 +41,7 @@ export class ControlPanelComponent {
     }, err => console.log(err)
     )
   }
+
 
   getInningData(){
     //get innning
@@ -74,6 +77,15 @@ export class ControlPanelComponent {
   //       console.log(err);
   //     }
   //   )
+  }
+
+  startInning(){
+    this.inningData.inningNumber=1;
+    this.inningData.status="started";
+    this.apiService.startInning(this.inningData).subscribe(
+      res=>{console.log(res);this.isInningStarted=true},err=>console.log(err)
+    )
+    
   }
 
   isBattingPlayerSelected(): boolean {

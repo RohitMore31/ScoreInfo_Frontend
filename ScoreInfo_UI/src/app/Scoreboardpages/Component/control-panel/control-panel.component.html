@@ -64,7 +64,7 @@
             </div>
           </div>  
           <div>
-            <button class="text-center btn-success" matStepperNext>Next</button>   
+            <button class="text-center btn-success"  matStepperNext>Next</button>   
         </div>        
         </mat-step>
 
@@ -73,8 +73,11 @@
           <ng-template matStepLabel>
             <mat-icon>emoji_events</mat-icon> <!-- Score Icon -->
           </ng-template>
-          <app-scoreboard></app-scoreboard>
-          <h1>Enter Score</h1>
+          <button  class="text-center btn-success" (click)="startInning()"> Start Inning</button>
+          <div *ngIf="isInningStarted">
+            <app-scoreboard [batters]="batters" [bowler]="bowler" [inningData]="inningData"></app-scoreboard>
+            <h1>Enter Score</h1>
+          </div>
         </mat-step>
       </mat-horizontal-stepper>
 
