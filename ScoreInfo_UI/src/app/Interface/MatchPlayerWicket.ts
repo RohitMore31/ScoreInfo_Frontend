@@ -10,4 +10,11 @@ export interface MatchPlayerWicket{
      playerWicket:Number,
      playerExtra:Number,
      playerOvers:Number,
+     playerMiddenOver:Number,
+     playerNoball:Number,
+     playerWide:Number,
+     playerRun:Number,
+     playerEco:Number
+
+     
 }

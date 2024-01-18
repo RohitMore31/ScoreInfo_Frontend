@@ -1,7 +1,7 @@
-<div class="scoreBox">
+<div>
     <mat-horizontal-stepper linear #stepper>
         <!-- Step 1: Batting Icon -->
-        <mat-step [completed]="isBattingPlayerSelected()">
+        <mat-step [completed]="true"> <!--isBattingPlayerSelected() -->
           <ng-template matStepLabel>
             <mat-icon class="fs-1" color = "warn">sports_cricket</mat-icon> <!-- Batting Icon -->
           </ng-template>
@@ -35,7 +35,7 @@
         </mat-step>
 
         <!-- Step 2: Bowling Icon -->
-        <mat-step [completed]="isBowlerSelected()">
+        <mat-step [completed]="true"> <!--isBowlerSelected() -->
           <ng-template matStepLabel>
             <mat-icon>sports_handball</mat-icon> <!-- Bowling Icon -->
           </ng-template>

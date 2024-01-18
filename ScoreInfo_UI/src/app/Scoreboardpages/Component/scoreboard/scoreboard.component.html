@@ -1,7 +1,7 @@
-<div class="ptcontainer">
+<div > <!--class="ptcontainer"-->
     <!-- batting details -->
     <div>
-        <h3 class="bg-dark my-2 p-2 text-white">Team1 Inning Batting </h3>
+        <h4 class="bg-dark my-2 p-2 text-white">Batting - {{inningData.battingTeam}}</h4>
         <table class="table table-striped table-bordered">
             <thead class="bg-light">
             <tr>
@@ -15,14 +15,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let team of Batter" >
-            
-                <!-- <td>{{ team.name }}</td>
-                <td>{{ team.match }}</td>
-                <td>{{ team.win }}</td>
-                <td>{{ team.loss }}</td>
-                <td>{{ team.point }}</td>
-                <td>{{ team.runRate }}</td>  -->
+            <tr *ngFor="let batsman of inningBatters" >
+                <td>{{ batsman.playerName }} {{batsman.playerSurName}}</td>
+                <td>{{ batsman.wicketStatus}}</td>
+                <td>{{ batsman.playerRun }}</td>
+                <td>{{ batsman.playerBall }}</td>
+                <td>{{ batsman.playerFour }}</td>
+                <td>{{ batsman.playerSix }}</td> 
+                <td>{{ batsman.playerStrikeRate }}</td>
             </tr>
             </tbody>
         </table>
@@ -36,7 +36,7 @@
 
     <!-- bowling details -->
     <div>
-        <h3 class="bg-dark my-2 p-2 text-white">Team1 Inning Bowling</h3>
+        <h4 class="bg-dark my-2 p-2 text-white">Bowling - {{inningData.bowlingTeam}}</h4>
         <table class="table table-striped table-bordered">
             <thead class="bg-light">
             <tr>
@@ -51,14 +51,15 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let team of Bowlers" >
-            
-                <!-- <td>{{ team.name }}</td>
-                <td>{{ team.match }}</td>
-                <td>{{ team.win }}</td>
-                <td>{{ team.loss }}</td>
-                <td>{{ team.point }}</td>
-                <td>{{ team.runRate }}</td>  -->
+            <tr *ngFor="let bowler of inningBowlers" >
+                <td>{{ bowler.playerName }} {{bowler.playerSurName}}</td>
+                <td>{{ bowler.playerOvers }}</td>
+                <td>{{ bowler.playerMiddenOver }}</td>
+                <td>{{ bowler.playerRun }}</td>
+                <td>{{ bowler.playerWicket }}</td>
+                <td>{{ bowler.playerNoball }}</td> 
+                <td>{{ bowler.playerWide }}</td> 
+                <td>{{ bowler.playerEco }}</td> 
             </tr>
             </tbody>
         </table>

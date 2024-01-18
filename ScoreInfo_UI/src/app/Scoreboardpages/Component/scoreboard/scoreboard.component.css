@@ -1,0 +1,12 @@
+.ptcontainer{
+   
+}
+
+@media (max-width: 900px) {
+    .ptcontainer {
+    
+        width: 70vw !important;
+        margin: auto  !important;
+     
+    }
+  } 
