@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Inning } from 'src/app/Interface/InningInfo';
 import { MatchPlayerScore } from 'src/app/Interface/MatchPlayerScore';
 import { MatchPlayerWicket } from 'src/app/Interface/MatchPlayerWicket';
@@ -9,7 +9,7 @@ import { Player } from 'src/app/Interface/Player';
   templateUrl: './scoreboard.component.html',
   styleUrls: ['./scoreboard.component.css']
 })
-export class ScoreboardComponent {
+export class ScoreboardComponent implements OnChanges {
   @Input() batters:Player [] = [];
   @Input() bowler:Player [] =[];
   @Input() inningData:Inning = {}as Inning;
@@ -20,11 +20,11 @@ export class ScoreboardComponent {
   constructor(){}
 
   ngOnInit(){
-    console.log("in constr");
-    console.log(this.batters);
-    console.log(this.bowler);
-    console.log(this.inningData);
-    
+    this.addToInnigBatters();
+    this.addToInnigBowlers();
+  }
+
+  ngOnChanges() {
     this.addToInnigBatters();
     this.addToInnigBowlers();
   }
@@ -43,9 +43,16 @@ export class ScoreboardComponent {
         batsman.playerSix=0;
         batsman.playerStrikeRate=0;
         batsman.wicketStatus="not out"
-
-        this.inningBatters.push(batsman);
+  
+        if(this.inningData.status==="onthemark" && this.inningBatters.length==2){ // add opening pair
+          const index = this.inningBatters.findIndex(r=>(r.playerId!=batsman.playerId));
+          this.inningBatters.splice(index,1);
+          this.inningBatters.push(batsman);
+        }else if((this.inningData.status==="onthemark" && this.inningBatters.length<2) || this.inningData.status==="started"){
+          this.inningBatters.push(batsman);
+        }
       });
+      
     }else{
       console.log("select batters"); //show notification
     }
@@ -67,7 +74,13 @@ export class ScoreboardComponent {
         bowler.playerRun=0
         bowler.playerEco=0
 
-        this.inningBowlers.push(bowler);
+        if(this.inningData.status==="onthemark" && this.inningBowlers.length===1){ // add opening pair
+          const index = this.inningBowlers.findIndex(r=>(r.playerId!=bowler.playerId));
+          this.inningBowlers.splice(index,1);
+          this.inningBowlers.push(bowler);
+        }else if((this.inningData.status==="onthemark" && this.inningBowlers.length<1) || this.inningData.status==="started"){
+          this.inningBowlers.push(bowler);       
+        }
      })
     }else{
       console.log("select bowlers"); //show notification

@@ -81,7 +81,7 @@ export class ControlPanelComponent {
 
   startInning(){
     this.inningData.inningNumber=1;
-    this.inningData.status="started";
+    this.inningData.status="onthemark";
     this.apiService.startInning(this.inningData).subscribe(
       res=>{console.log(res);this.isInningStarted=true},err=>console.log(err)
     )
@@ -108,20 +108,31 @@ export class ControlPanelComponent {
   }
 
   onBattingPlayerSelection(player: Player) {
-    if (this.batters.length < 2) {
-      this.batters.push(player)
-    }else if(this.batters.includes(player)){
-      const index = this.batters.indexOf(player);
-      this.batters.splice(index, 1);
+    // if (this.batters.length < 2) {
+    //   this.batters.push(player)
+    // }else if(this.batters.includes(player)){
+    //   const index = this.batters.indexOf(player);
+    //   this.batters.splice(index, 1);
+    // }
+    if (this.batters.length < 2 && !(this.batters.includes(player))) {
+      this.batters = this.batters.concat(player);
+    } else if (this.batters.includes(player)) {
+      this.batters = this.batters.filter(p => p !== player);
     }
+ 
   }
 
   onBowlingPlayerSelection(player: Player) {
-    if (this.bowler.length < 1) {
-      this.bowler.push(player)
-    }else if(this.bowler.includes(player)){
-      const index = this.bowler.indexOf(player);
-      this.bowler.splice(index, 1);
+    // if (this.bowler.length < 1) {
+    //   this.bowler.push(player)
+    // }else if(this.bowler.includes(player)){
+    //   const index = this.bowler.indexOf(player);
+    //   this.bowler.splice(index, 1);
+    // }
+    if (this.bowler.length < 1 && !(this.bowler.includes(player))) {
+      this.bowler = this.bowler.concat(player);
+    } else if (this.bowler.includes(player)) {
+      this.bowler = this.bowler.filter(p => p !== player);
     }
   }
 
