@@ -65,4 +65,42 @@
         </table>
     </div>
 
+    <div class="addScore">
+        <div class="card">
+            <h5 class="card-header">Over </h5>
+            <div class="card-body">
+                <div class="card-title d-flex justify-content-between">
+                    <h5>Run : </h5>
+                    <button type="button" class="btn-primary">Add</button>
+                </div>
+                <!-- <h6 class="bg-body-tertiary p-2 border-top border-bottom">Matches</h6> -->
+                <div class="">
+                    <div class=" py-2 border-top border-bottom" >
+                        <button type="button" class="btn-circle btn-md fs-2 m-2 "(click)="logRun(0)">0R </button>
+                        <button type="button" class="btn-circle btn-md fs-2 m-2 "(click)="logRun(1)">1R </button>
+                        <button type="button" class="btn-circle btn-md fs-2 m-2" (click)="logRun(2)">2R </button>
+                        <button type="button" class="btn-circle btn-md fs-2 m-2" (click)="logRun(4)">3R </button>
+                        <button type="button" class="btn-circle btn-md fs-2 m-2" (click)="logRun(4)">4R </button>
+                        <button type="button" class="btn-circle btn-md fs-2 m-2" (click)="logRun(5)">5R </button>
+                        <button type="button" class="btn-circle btn-md fs-2 m-2" (click)="logRun(6)">6R </button>
+                        <!-- <button type="button" class="btn-circle btn-md fs-2 m-2" (click)="logRun(6)">any </button> -->
+                    </div>
+                    <div  class=" py-2 border-top border-bottom text-center" >
+                        <button type="button" class="btn-lg px-5 py-2 m-2" (click)="logRun(4)">4 </button>
+                        <button type="button" class="btn-lg px-5 py-2 m-2" (click)="logRun(6)">6 </button>
+                    </div>
+                    <div class=" py-2 border-top border-bottom" >
+                        <button type="button" class="btn-circle btn-md fs-2 m-2" (click)="logRun('wd')">wd </button>
+                        <button type="button" class="btn-circle btn-md fs-2 m-2" (click)="logRun('nb')">Nb </button>
+                        <button type="button" class="btn-circle btn-md fs-2 m-2" (click)="logRun('w')">W </button>
+                        <button type="button" class="btn-circle btn-md fs-2 m-2" (click)="logRun('lb')">Lb </button>
+                        <button type="button" class="btn-circle btn-md fs-2 m-2" (click)="logRun('b')">b </button>
+                        <button type="button" class="btn-circle btn-md fs-2 m-2 btn-primary" (click)="logRun('+')"> + </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+
+   

@@ -87,5 +87,8 @@ export class ScoreboardComponent implements OnChanges {
     }
   }
   
-
+  logRun(data:any){
+    console.log(data);
+    
+  }
 }
